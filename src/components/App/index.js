@@ -13,7 +13,8 @@ import HomePage from '../Home';
 import AccountPage from '../Account';
 import AdminPage from '../Admin';
 
-import {FirebaseContext} from '../Firebase/index';
+import {FirebaseContext} from '../Firebase';
+import {AuthUserContext} from '../Session';
 
 import * as ROUTES from '../../constants/routes';
 
@@ -30,21 +31,24 @@ function App() {
   }, [firebase.auth]);
 
   return(
-    <Router>
-      <div>
-        <Navigation authUser={authUser} firebase={firebase}/>
-  
-        <hr />
-  
-        <Route exact path={ROUTES.LANDING} component={LandingPage} />
-        <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
-        <Route path={ROUTES.SIGN_IN} component={SignInPage} />
-        <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
-        <Route path={ROUTES.HOME} component={HomePage} />
-        <Route path={ROUTES.ACCOUNT} component={AccountPage} />
-        <Route path={ROUTES.ADMIN} component={AdminPage} />
-      </div>
-    </Router>
+    <AuthUserContext.Provider value={authUser}>
+      <Router>    
+        <div>
+          <Navigation />
+    
+          <hr />
+    
+          <Route exact path={ROUTES.LANDING} component={LandingPage} />
+          <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
+          <Route path={ROUTES.SIGN_IN} component={SignInPage} />
+          <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
+          <Route path={ROUTES.HOME} component={HomePage} />
+          <Route path={ROUTES.ACCOUNT} component={AccountPage} />
+          <Route path={ROUTES.ADMIN} component={AdminPage} />
+        </div>
+      </Router>
+    </AuthUserContext.Provider>
+    
   );
 }
  
