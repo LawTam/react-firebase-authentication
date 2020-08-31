@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
  
 import { FirebaseContext } from '../Firebase';
@@ -21,7 +21,6 @@ function PasswordForgetForm() {
   const[credentials, setCredentials] = useState(null);
  
   const onSubmit = event => {
- 
     firebase.doPasswordReset(credentials.email)
       .then(() => {
         setCredentials({ ...INITIAL_STATE });

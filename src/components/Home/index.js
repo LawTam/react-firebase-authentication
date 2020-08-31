@@ -1,9 +1,23 @@
 import React from 'react';
  
+import { withAuthorization } from '../Session';
+ 
 const Home = () => (
   <div>
-    <h1>Home</h1>
+    <h1>Home Page</h1>
+    <p>The Home Page is accessible by every signed in user.</p>
   </div>
 );
  
-export default Home;
+const condition = authUser => authUser != null;
+ 
+// short version
+//const condition = authUser => !!authUser;
+
+// role-based authorization
+//const condition = authUser => authUser.role === 'ADMIN';
+ 
+// permission-based authorization
+//const condition = authUser => authUser.permissions.canEditAccount;
+ 
+export default withAuthorization(condition)(Home);

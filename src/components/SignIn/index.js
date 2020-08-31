@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
  
 import { SignUpLink } from '../SignUp';
+import { PasswordForgetLink } from '../PasswordForget'
 
 import * as ROUTES from '../../constants/routes';
 import {FirebaseContext} from '../Firebase/index';
@@ -10,7 +11,9 @@ const SignInPage = () => (
   <div>
     <h1>SignIn</h1>
     <SignInForm />
+    <PasswordForgetLink />
     <SignUpLink />
+    
   </div>
 );
  
