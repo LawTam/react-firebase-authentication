@@ -35,7 +35,6 @@ function App() {
       <Router>    
         <div>
           <Navigation />
-    
           <hr />
     
           <Route exact path={ROUTES.LANDING} component={LandingPage} />
